@@ -1,13 +1,13 @@
 ### Get All Files
-GET http://localhost:4000/users
+GET https://server-crud-node.onrender.com/users
 
 ### Get File by Id
 
-GET http://localhost:4000/users/63e4e4bf5b0ac537cb8d31de
+GET https://server-crud-node.onrender.com/users/63e4e4bf5b0ac537cb8d31de
 
 ### Create File
 
-POST http://localhost:4000/users HTTP/1.1
+POST https://server-crud-node.onrender.com/users HTTP/1.1
 Content-Type: application/json
 
 {
@@ -19,4 +19,4 @@ Content-Type: application/json
 
 ### Delete File
 
-DELETE http://localhost:4000/users/63e563319d8aefb0e337080f
+DELETE https://server-crud-node.onrender.com/users/63e563319d8aefb0e337080f
