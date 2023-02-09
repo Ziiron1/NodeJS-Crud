@@ -1,30 +1,13 @@
 let counter = 0;
-
+const bcrypt = require("bcryptjs");
+const User = require("../model/UserSchema");
 const express = require("express");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const User = require("./model/UserSchema");
-dotenv.config();
-const { uuid } = require("uuidv4");
 const app = express();
-
 const cors = require("cors");
-app.use(cors());
-
-
-mongoose.set("strictQuery", true);
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Successfully connected to MongoDB"))
-  .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
-
 app.use(express.json());
+app.use(cors());
+const { uuid } = require("uuidv4");
 
-app.use("/", require("./test/login"))
-app.use("/token", require("./controller/TokenAuth"))
 // CREATE - POST request
 app.post("/users", (req, res) => {
   const user = new User({
@@ -51,6 +34,10 @@ app.post("/users", (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
 // READ - GET request
 app.get("/users", (req, res) => {
   User.find()
@@ -66,7 +53,6 @@ app.get("/users", (req, res) => {
       });
     });
 });
-
 
 // READ - GET request for a specific id
 app.get("/users/:id", (req, res) => {
@@ -86,18 +72,16 @@ app.get("/users/:id", (req, res) => {
     });
 });
 
-
-
 // UPDATE - PATCH request
 app.patch("/users/:id", (req, res) => {
   const id = req.params.id;
-  const updateOps = {};
+  const updateOps = req.body;
 
-  for (const ops of req.body) {
-    updateOps[ops.propName] = ops.value;
+  if (updateOps.password) {
+    updateOps.password = bcrypt.hashSync(updateOps.password, 8);
   }
 
-  User.update({ _id: id }, { $set: updateOps })
+  User.update({ internalId: id }, { $set: updateOps })
     .then((result) => {
       res.status(200).json({
         message: "User updated",
@@ -115,8 +99,7 @@ app.patch("/users/:id", (req, res) => {
 app.delete("/users/:id", (req, res) => {
   const id = req.params.id;
 
-  User
-    .deleteOne({ _id: id })
+  User.deleteOne({ internalId: id })
     .then((result) => {
       res.status(200).json({
         message: "User deleted",
@@ -130,8 +113,4 @@ app.delete("/users/:id", (req, res) => {
     });
 });
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+module.exports = app;

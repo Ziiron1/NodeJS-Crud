@@ -5,6 +5,7 @@ const { uuid } = require("uuidv4");
 const UserSchema = new mongoose.Schema({
   internalId: {
     type: Number,
+    unique: true,
   },
   id: {
     type: String,
