@@ -32,10 +32,6 @@ app.post("/users", (req, res) => {
     });
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 // READ - GET request
 app.get("/users", (req, res) => {
   User.find()
