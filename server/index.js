@@ -36,3 +36,9 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
+/* Separar o crud.  Fazer funções do tipo, delete, create, findbyid.... 
+E fazer essas funções em um arquivo na pasta controllers, depois chamar em um arquivo na pasta routes.
+que será o que é a rota.
+*/

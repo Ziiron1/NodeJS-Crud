@@ -1,4 +1,3 @@
-let counter = 0;
 const bcrypt = require("bcryptjs");
 const User = require("../model/UserSchema");
 const express = require("express");
@@ -12,7 +11,6 @@ const { uuid } = require("uuidv4");
 app.post("/users", (req, res) => {
   const user = new User({
     id: uuid(),
-    internalId: ++counter,
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
