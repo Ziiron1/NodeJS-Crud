@@ -11,8 +11,8 @@ POST https://server-crud-node.onrender.com/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name":"dada",
-    "email":"dadac@gmail.com",
+    "name":"da",
+    "email":"da@gmail.com",
     "password":"dada",
     "data":""
 }

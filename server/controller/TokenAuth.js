@@ -19,7 +19,7 @@ function verifyToken(req, res, next) {
 }
 
 router.get("/auth", verifyToken, (req, res) => {
-  return res.json({ message: "Acesso autorizado" });
+  return res.json({ message: "Acesso com Token autorizado!" });
 });
 
 module.exports = router;

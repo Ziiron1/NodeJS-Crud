@@ -9,6 +9,7 @@ const app = express();
 
 const cors = require("cors");
 app.use(cors());
+app.use(express.static(__dirname + "/view"));
 
 mongoose.set("strictQuery", true);
 async function connectToMongoDB() {
