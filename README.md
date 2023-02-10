@@ -30,6 +30,19 @@ A rota para a autenticação do token é `localhost:4000/token/auth` e é acessa
 
 <br>
 
+### <em>Rotas</em>
+
+| Método | Rota | Descrição |
+| ------ | ----- | ----------- |
+|  **`GET`** | **/users** | Retorna todos os usuários. |
+|  **`GET`** | **/users/:id** | Retorna um só usuário. |
+|  **`POST`** | **/users** | Cria um novo usuário.  |
+|  **`PATCH`** | **/users/:id** | Atualiza o usuário específico.
+|  **`DELETE`** | **/users/:id** | Deleta o usuário.
+|  **`POST`** | **/token/auth** | Pega o token gerado do usuário (Com o email e senha de login).
+|  **`POST`** | **/login** | Conecta a API REST e utiliza métodos para verificar os dados (Com headers de authorization)
+
+
 ## Página de Registro
 Uma página de registro simples está disponível para permitir que os usuários criem uma nova conta antes de fazer login na aplicação. Para criar uma nova conta, basta fornecer seu endereço de e-mail e senha e enviar a requisição.
 
