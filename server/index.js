@@ -1,10 +1,10 @@
 const userRoutes = require("./routes/User");
+const GameRoutes = require("./routes/Game")
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 // const User = require("./model/UserSchema");
 
-dotenv.config();
+require("dotenv").config();
 const app = express();
 
 const cors = require("cors");
@@ -29,6 +29,7 @@ connectToMongoDB();
 app.use(express.json());
 
 app.use("/", userRoutes);
+app.use("/", GameRoutes);
 app.use("/", require("./test/login"));
 app.use("/token", require("./controller/TokenAuth"));
 

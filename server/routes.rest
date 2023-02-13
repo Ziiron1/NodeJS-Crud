@@ -1,5 +1,5 @@
 ### Get All Files
-GET https://server-crud-node.onrender.com/users
+GET http://localhost:3000/game
 
 ### Get File by Id
 
@@ -7,16 +7,49 @@ GET https://server-crud-node.onrender.com/users/63e4e4bf5b0ac537cb8d31de
 
 ### Create File
 
-POST https://server-crud-node.onrender.com/users HTTP/1.1
+POST http://localhost:3000/game HTTP/1.1
 Content-Type: application/json
 
+
 {
-    "name":"da",
-    "email":"da@gmail.com",
-    "password":"dada",
-    "data":""
+"game_id":69,
+"name":"Cuz",
+"background_image":"Naotemfoto",
+"original_name":"originalname",
+"uploader_by": "BY Fitgirl",
+"category":"pc",
+"date_time_uploaded": "2022-12-25T12:00:00Z",
+"size_of_game": "5 GB",
+"background_image_additional":"https://www.helvetii.com/images/background_additional.jpg",
+"magnet_link":"magnet:?xt=urn:btih:E5674854D7E8F23BDF5A3F3A2A36EAE4B4EC4DEE",
+"youtube_videoid":"aa",
+"youtube_description":"adada",
+"youtube_imageurl":"urlbraba",
+"description_raw":"Descrição padrao",
+"developers": [
+      "developers1", "developers2", "developers3"
+    ],
+"genres": [
+        "genre1","genre2","genre3"
+    ],
+"platforms": [
+    "platforms1", "platforms2", "platform3"
+],
+"website": "https://www.google.com",
+"tags": [
+    "tag1", "tag2", "tag3"
+],
+"short_screenshots": [
+    "short_screenshots1", "short_screenshots2", "short_screenshots3"
+],
+"released": "released",
+"minimum": "minimum",
+"recommended": "recommended"
+
 }
+
+
 
 ### Delete File
 
-DELETE https://server-crud-node.onrender.com/users/63e563319d8aefb0e337080f
+DELETE http://localhost:3000/game/63e975158b9f69942cf2f426
